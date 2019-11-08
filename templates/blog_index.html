@@ -1,0 +1,48 @@
+{% load static %}
+
+{% include "includes/header.html" %}
+    <body>
+        <div class="wrapper-normal">
+            <div class=" page blog">
+                <header class="header-home animated">
+                    <a class="link" href="#">
+                        <img class="selfie" alt="Dash Ma" src="{% static '/assets/images/profile.jpg' %}" />
+                    </a>
+                    <h1 class="title">Dash Ma</h1>
+                    <h2 class="description">Life is short, I Choose Python!</h2>
+                    {% include "includes/social_links.html" %}
+                </header>
+                <nav class="nav">
+                    <ul class="list">
+                        <li class="item">
+                            <a class="link" href="{% url 'indigo_blog:index' %}">Home</a>
+                        </li>
+                        <li class="item">
+                            <a class="link" href="{% url 'indigo_blog:project_index' %}">Projects</a>
+                        </li>
+                        <li class="item">
+                            <a class="link" href="#">About</a>
+                        </li>
+                        <li class="item">
+                            <a class="link" href="#">Résumé</a>
+                        </li>
+                    </ul>
+                </nav>
+                <section class="list">
+                {% for post in post_list %}
+                    <div class="item star">
+                        <a class="url" href={{ post.get_absolute_url }}>
+                            <aside class="date"><time datetime="{{ post.created_time }}">{{ post.created_time |date:"M d Y" }}</time></aside>
+                            <h3 class="title">{{ post.title }}</h3>
+                        </a>
+                    {% empty %}
+                    </div>
+                    <p class="text-center">Nothing published yet!</p>
+                    {% endfor %}
+                </section>
+            {% include "includes/footer.html" %}
+            </div>
+        </div>
+        {% include "includes/svg.html" %}
+    </body>
+</html>

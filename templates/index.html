@@ -1,0 +1,38 @@
+{% load static %}
+
+{% include "includes/header.html" %}
+    <body>
+        <div class="wrapper-normal">
+            <div class=" page home">
+                <header class="header-home animated">
+                    <a class="link" href="#">
+                        <img class="selfie" alt="Dash Ma" src="{% static '/assets/images/profile.jpg' %}" />
+                    </a>
+                    <h1 class="title">Dash Ma</h1>
+                    <h2 class="description">Life is short, I Choose Python!</h2>
+                    {% include "includes/social_links.html" %}
+                </header>
+                <nav class="nav-home">
+                    <ul class="list">
+                        <li class="item">
+                            <a class="link" href="{% url 'indigo_blog:blog_index' %}">Blog</a>
+                        </li>
+                        <li class="item">
+                            <a class="link" href="{% url 'indigo_blog:project_index' %}">Projects</a>
+                        </li>
+                        <li class="item">
+                            <a class="link" href="#">About</a>
+                        </li>
+                        <li class="item">
+                            <a class="link" href="#">Résumé</a>
+                        </li>
+                    </ul>
+                </nav>
+            {% include "includes/footer.html" %}
+            </div>
+        </div>
+        {% include "includes/svg.html" %}
+    </body>
+</html>
+
+

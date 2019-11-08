@@ -1,0 +1,47 @@
+{% load static %}
+
+
+{% include "includes/header.html" %}
+
+<body>
+    <div class="wrapper-normal">
+        <div class=" post">
+                <nav class="nav">
+                        <ul class="list">
+                            <li class="item">
+                                <a class="link" href="{% url 'indigo_blog:index' %}">Home</a>
+                            </li>
+                            <li class="item">
+                                <a class="link" href="{% url 'indigo_blog:project_index' %}">Projects</a>
+                            </li>
+                            <li class="item">
+                                <a class="link" href="#">About</a>
+                            </li>
+                            <li class="item">
+                                <a class="link" href="#">Résumé</a>
+                            </li>
+                        </ul>
+                    </nav>
+            <h1 class="title">{{ post.title }}</h1>
+            <span class="date">
+                    <time datetime="{{ post.created_time }}">{{ post.created_time|date:"D M d Y" }}</time>
+            </span>
+            <div class="post-tags">
+                    {% for tag in post.tags.all %}
+                        <a class="item" href="#">{{ tag.name }}</a>
+                    {% endfor %}
+            </div>
+            {{ post.body|safe }}
+        </div>
+    </div>
+<body>
+    <script src="https://cdn.bootcss.com/highlight.js/9.15.8/highlight.min.js"></script>
+    <script src="https://cdn.bootcss.com/highlightjs-line-numbers.js/2.7.0/highlightjs-line-numbers.min.js"></script>
+    <script>
+        hljs.initHighlightingOnLoad();
+        hljs.initLineNumbersOnLoad();
+    </script>
+</body>
+</body>
+</html>
+
